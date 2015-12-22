@@ -1,5 +1,5 @@
 var random = function () {
-    if (Math.random() < 0.2) {
+    if (Math.random() < 0.5) {
         return true;
     }
     return false;
@@ -52,31 +52,41 @@ var game = function () {
                     }
                 }
             }
-            if (neighbor == 3 && point.style.backgroundColor == 'white') {
-                point.style.backgroundColor = 'red';
+            if (point.style.backgroundColor == 'white' && neighbor == 3) {
+                point.life = true;
             }
             if (point.style.backgroundColor == 'red' && (neighbor == 2 || neighbor == 3)) {
-                point.style.backgroundColor == 'red';
+                point.life = true;
+            }
+            if (point.style.backgroundColor == 'red' && (neighbor < 2 || neighbor > 3)) {
+
+                point.life = false;
+            }
+        }
+    }
+    for (var p = 0; p < 20; p++) {
+        for (var z = 0; z < 20; z++) {
+            var point1 = document.getElementById('x' + p + '_y' + z);
+            if (point1.life) {
+                point1.style.backgroundColor = 'red';
             }
             else {
-
-                point.style.backgroundColor = 'white';
+                point1.style.backgroundColor = 'white';
             }
         }
     }
 };
-
 //button step
 document.getElementById('step').onclick = function () {
     game();
 };
 //button start
-document.getElementById('start').onclick = function(){
+document.getElementById('start').onclick = function () {
     intervalID = setInterval(function () {
         game();
     }, 200);
 };
 
-document.getElementById('stop').onclick = function(){
+document.getElementById('stop').onclick = function () {
     clearInterval(intervalID);
 };
