@@ -1,0 +1,41 @@
+body {
+    transition: all 1s;
+}
+
+h1 {
+    text-align: center;
+}
+
+main {
+}
+
+#gamefield {
+
+    width: 540px;
+    height: 540px;
+    margin: auto;
+    border: solid 1px darkslategrey;
+}
+
+.buttons {
+    width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.point {
+    width: 25px;
+    height: 25px;
+    border: 1px solid grey;
+    float: left;
+}
+
+#random, #step,#start,#stop {
+    margin: 10px;
+    cursor: pointer;
+}
+
+#random:hover, #step:hover,#start:hover,#stop:hover {
+    color: blue;
+    font-size: 20px;
+}
